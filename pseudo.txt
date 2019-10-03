@@ -1,0 +1,15 @@
+-buttons will generate gifs from giphy of the name of the animal.
+	-on click handler that will ajax the giphy website
+	-API + key, + name of button, _s (start on still state)
+
+-each gif will generate the rating
+	-function will call for the response.rating
+
+-if you click on the gif it will start the gif and if you click again it will stop
+	-use states: animated and still = _s
+
+-there will be a text box with a submit button anything you enter into the text box
+and submit will generate a new button.
+	-on click handler 
+		-generate new button
+		-function button	
