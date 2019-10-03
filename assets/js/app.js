@@ -26,18 +26,28 @@ $("#add-movie").on("click", function (event) {
 
 renderButtons();
 
-function giphySearch(){
-var movie = $(this).attr("data-name");
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rusCH39FBwAZCCAbjio1hsKdu3nXRq6d&q="
-+ movie + "&limit=10&rating=G&lang=en";
-console.log(movie);
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response){
-  console.log("URL", queryURL);
-  console.log("response", response);
-})
+function giphySearch() {
+  var movie = $(this).attr("data-name");
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rusCH39FBwAZCCAbjio1hsKdu3nXRq6d&q="
+    + movie + "&limit=10&rating=G&lang=en";
+  console.log(movie);
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log("URL", queryURL);
+    console.log("response", response);
+
+    for (i = 0; i < 10; i++) {
+      
+      var imageURL = response.data[i].url;
+      var image = $("<img>");
+      image.attr("src", imageURL[i]);
+      image.attr("alt", "URL");
+    }
+
+    $("#images").prepend(image);
+  })
 };
 
 $(document).on("click", ".movie", giphySearch);
