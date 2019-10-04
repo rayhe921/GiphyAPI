@@ -1,36 +1,36 @@
 
-var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+var games = ["Super Mario", "Pokemon", "Street Fighter", "Final Fantasy"];
 
 // Function for displaying movie data
 function renderButtons() {
 
   $("#buttons-view").empty();
 
-  for (var i = 0; i < movies.length; i++) {
+  for (var i = 0; i < games.length; i++) {
 
     var a = $("<button>");
-    a.addClass("movie");
-    a.attr("data-name", movies[i]);
-    a.text(movies[i]);
+    a.addClass("game");
+    a.attr("data-name", games[i]);
+    a.text(games[i]);
     $("#buttons-view").append(a);
   }
 };
 
 // This function handles events where one button is clicked
-$("#add-movie").on("click", function (event) {
+$("#add-game").on("click", function (event) {
   event.preventDefault();
-  var movie = $("#movie-input").val().trim();
-  movies.push(movie);
+  var game = $("#game-input").val().trim();
+  games.push(game);
   renderButtons();
 });
 
 renderButtons();
 
 function giphySearch() {
-  var movie = $(this).attr("data-name");
+  var game = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rusCH39FBwAZCCAbjio1hsKdu3nXRq6d&q="
-    + movie + "&limit=10&rating=G&lang=en";
-  console.log(movie);
+    + game + "&limit=10&rating=G&lang=en";
+  console.log(game);
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -64,7 +64,7 @@ function giphySearch() {
   })
 };
 
-$(document).on("click", ".movie", giphySearch);
+$(document).on("click", ".game", giphySearch);
 
 function gifStart(){
 var state = $(this).attr("data-state");
